@@ -19,3 +19,6 @@ A zero-cost Threat Intelligence Platform built on MISP with live IOC feeds and e
 
 ## Author
 Mrutyunjaya Muduli | CTI Analyst | 6 Years Experience
+
+## Dashboard Preview
+![MISP Threat Intel Dashboard](misp-dashboard.png)
