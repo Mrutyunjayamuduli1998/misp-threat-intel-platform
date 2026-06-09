@@ -22,3 +22,9 @@ Mrutyunjaya Muduli | CTI Analyst | 6 Years Experience
 
 ## Dashboard Preview
 ![MISP Threat Intel Dashboard](misp-dashboard.png)
+
+
+## Automated IOC Ingestion from Excel
+Fill ioc_intel.xlsx with your research and run:
+python3 misp_ingest.py
+Columns: indicator, ioc_type, threat_actor, threat_type, confidence, first_seen, last_seen, country_origin, targeted_country, targeted_region, targeted_sector, associated_malware, associated_cve, tags, source, reference_url, notes
