@@ -6,6 +6,18 @@ from datetime import datetime
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+CATEGORY_MAP = {
+    "ip-dst":    "Network activity",
+    "ip-src":    "Network activity",
+    "domain":    "Network activity",
+    "url":       "Network activity",
+    "md5":       "Artifacts dropped",
+    "sha256":    "Artifacts dropped",
+    "sha1":      "Artifacts dropped",
+    "email-src": "Payload delivery",
+    "filename":  "Artifacts dropped",
+}
+
 # ── Configuration ──
 MISP_URL = "https://localhost"
 MISP_KEY = input("Enter your MISP API key: ").strip()
@@ -95,11 +107,12 @@ def create_event(row):
 
 def add_attribute(event_id, row):
     """Add IOC attribute to event"""
+    ioc_type = row.get("ioc_type", "domain")
     attr = {
         "Attribute": {
             "event_id": event_id,
-            "type": row.get("ioc_type", "domain"),
-            "category": "Artifacts dropped",
+            "type": ioc_type,
+            "category": CATEGORY_MAP.get(ioc_type, "Network activity"),
             "value": row["indicator"],
             "to_ids": True,
             "comment": row.get("notes", ""),
